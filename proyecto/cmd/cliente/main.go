@@ -25,7 +25,6 @@ func main() {
 		nombre = string(nombreBytes)
 	}
 
-	// El cliente SIEMPRE inicia con Dial (Socket activo hacia el servidor)
 	conexion, err := net.Dial("tcp", direccionServidor)
 	if err != nil {
 		log.Fatalf("No se pudo conectar al servidor: %v", err)
@@ -34,17 +33,14 @@ func main() {
 
 	log.Printf("Conectado exitosamente al servidor %s", direccionServidor)
 
-	// Enviar identificación en JSON
 	msgIdentificacion := protocolo.NuevoMensaje(nombre, "", "identificacion")
 	err = protocolo.Codificar(conexion, msgIdentificacion)
 	if err != nil {
 		log.Fatalf("Error al enviar el mensaje de identificación: %v", err)
 	}
 
-	// Sub-rutina paralela para recibir respuestas sin bloquear el teclado
 	go recibirMensajes(conexion)
 
-	// Hilo principal: Captura texto de consola y lo envía
 	lectorTeclado := bufio.NewReader(os.Stdin)
 	fmt.Print("> ")
 	for {

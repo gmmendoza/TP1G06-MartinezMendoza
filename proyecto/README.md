@@ -28,14 +28,21 @@ docker-compose up --build
 
 ## Requisitos completados
 
-- [ ] Servidor TCP concurrente
-- [ ] Protocolo JSON
-- [ ] Registro de clientes con sync.RWMutex
-- [ ] Broadcast a todos los clientes
-- [ ] Cliente interactivo (stdin + recepción paralela)
-- [ ] Docker + docker-compose
+- [X] Servidor TCP concurrente
+- [X] Protocolo JSON
+- [X] Registro de clientes con sync.RWMutex
+- [X] Broadcast a todos los clientes
+- [X] Cliente interactivo (stdin + recepción paralela)
+- [X] Docker + docker-compose
 - [ ] Bonus: descubrimiento UDP
 
 ## Captura de ejecución
 
-(Adjuntar log o captura de pantalla con múltiples clientes conectados)
+A continuación se muestran las capturas de pantalla que demuestran el funcionamiento del servidor de broadcast concurrente con múltiples clientes conectados en paralelo:
+
+### Conexión y envío de mensajes
+![Conexión de múltiples clientes](../imagenes/imagen1.jpg)
+
+### Broadcast de mensajes en tiempo real
+![Mensajes difundidos entre clientes](../imagenes/imagen2.jpg)
+
